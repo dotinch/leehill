@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.hynd.mapper.HillMapper">
+
+  <resultMap id="HillMap" type="Hill">
+    <id column="id" property="id" jdbcType="VARCHAR" javaType="java.lang.String"  />
+    <result column="name" property="name" jdbcType="VARCHAR" javaType="java.lang.String"  />
+  </resultMap>
+
+  <insert id="insert" parameterType="Hill">
+      INSERT INTO HILL(ID, NAME) VALUES(#{id}, #{name})
+  </insert>
+
+  <select id="findAll" resultMap="HillMap">
+      SELECT ID,NAME FROM HILL
+  </select>
+
+</mapper>
