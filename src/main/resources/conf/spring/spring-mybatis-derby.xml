@@ -13,7 +13,7 @@
     <!-- 数据库连接池druid配置 -->
     <bean id="dataSource_derby" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="jdbc:derby:D:\\derbyDB\\leehill;create=false" />
+        <property name="url" value="jdbc:derby:D:\\dev_tools\\data_derbyDB\\leehill;create=false" />
         <property name="username" value="" />
         <property name="password" value="" />
 
