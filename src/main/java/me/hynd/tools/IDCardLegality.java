@@ -23,21 +23,16 @@ import com.google.common.primitives.Ints;
  */
 public class IDCardLegality {
 
-    private static int[] R = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    //private static int[] R = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private static char[] C = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
-    private static int[] W = {1, 2, 4, 8, 5, 10, 9, 7, 3, 6, 1, 2, 4, 8, 5, 10, 9};
+    private static int[] W = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
 
     public static boolean valid(String IDCardNum) {
 
-        char[] a = IDCardNum.toCharArray();
-
         int sum = 0;
         for (int i = 0; i < 17; i++) {
-            System.out.print(String.valueOf(a[i]));
-            sum += Integer.valueOf(String.valueOf(a[i])) * W[i];
+            sum += Integer.valueOf(String.valueOf(IDCardNum.charAt(i))) * W[i];
         }
-
-        System.out.println();
 
         int r = IntMath.mod(sum, 11);
 
@@ -45,7 +40,7 @@ public class IDCardLegality {
         System.out.println("校验码：" + C[r]);
 
         // 校验码合法
-        if(C[r] == Integer.valueOf(String.valueOf(a[17]))) {
+        if(C[r] == IDCardNum.charAt(17)) {
             return true;
         }
 
@@ -53,13 +48,13 @@ public class IDCardLegality {
     }
 
     public static void main(String[] args) {
-        String idCardNum = "";
+        String idCardNum = "12345678901234567X";
 
-        for (int i = 0; i < 17; i++) {
-            System.out.print(IntMath.mod(IntMath.pow(2, i), 11) + ", ");
-        }
-
-        System.out.println();
+//        for (int i = 17; i > 0; i--) {
+//            System.out.print(IntMath.mod(IntMath.pow(2, i), 11) + ", ");
+//        }
+//
+//        System.out.println();
 
         System.out.println(IDCardLegality.valid(idCardNum));
     }
